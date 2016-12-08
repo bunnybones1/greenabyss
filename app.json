@@ -1,0 +1,8 @@
+{
+  "name": "Green Abyss",
+  "description": "Green Abyss: The Game",
+  "repository": "https://github.com/bunnybones1/greenabyss",
+  "logo": "http://greenabyss.herokuapp.com/greenabyss.svg",
+  "keywords": ["game", "green", "abyss"],
+  "image": "heroku/nodejs"
+}
