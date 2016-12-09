@@ -9,7 +9,9 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
-	var bundleUrl = 'https://s3.amazonaws.com/greenabyss/' + deployedClientBundles.list[~~(deployedClientBundles.list.length * Math.random())].file;
+	// var bundlePath = 'https://s3.amazonaws.com/greenabyss/';
+	var bundlePath = '';
+	var bundleUrl = bundlePath + deployedClientBundles.list[~~(deployedClientBundles.list.length * Math.random())].file;
 	response.render('pages/index', {bundleUrl:bundleUrl});
 });
 
