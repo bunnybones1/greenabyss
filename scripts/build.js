@@ -5,6 +5,7 @@ var jsonfile = require('jsonfile');
 var mkdirp = require('mkdirp');
 var fs = require('fs');
 
+var uglify = false;
 
 var __clientBundleListFilePath = '../server/src/deployedClientBundles.json';
 var __clientBundleList;
@@ -54,7 +55,12 @@ function buildBundle(gitIdString, err) {
 	}
 	var bundleFileName = 'bundle.' + gitIdString + '.js';
 	var bundleFilePath = 'app/client/' + bundleFileName;
-	var cmd = 'browserify src/index.js -o ' + bundleFilePath;
+	var cmd;
+	if(uglify) {
+		cmd = 'browserify src/index.js | uglifyjs -c > ' + bundleFilePath;
+	} else {
+		cmd = 'browserify src/index.js -o ' + bundleFilePath;
+	}
 	exec(cmd, function(error, stdout, stderr) {
 		if(error) {
 			throw error;
