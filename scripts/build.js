@@ -2,10 +2,11 @@ var crypto = require('crypto');
 var exec = require('child_process').exec;
 var getGitBasedName = require('./getGitBasedName');
 var jsonfile = require('jsonfile');
+var mkdirp = require('mkdirp');
 var fs = require('fs');
 
 
-var __clientBundleListFilePath = './src/server/deployedClientBundles.json';
+var __clientBundleListFilePath = '../server/src/deployedClientBundles.json';
 var __clientBundleList;
 getCurrentBuildsList(verifyClientBundlesListAndBuild);
 
@@ -34,8 +35,18 @@ function verifyClientBundlesListAndBuild(err, clientBundleList) {
 
 function startUniqueBuild(gitIdString) {
 	console.log('git build id: ' + gitIdString);
-	jsonfile.writeFile('./src/client/version.json', {gitIdString: gitIdString}, buildBundle.bind(null, gitIdString));
+	jsonfile.writeFile('./src/version.json', {gitIdString: gitIdString}, ensureBuildDirExists.bind(null, gitIdString));
 }
+
+function ensureBuildDirExists(gitIdString) {
+	mkdirp('./app/client', function(err) {
+		if(err) {
+			throw err;
+		}
+		buildBundle(gitIdString);
+	});
+}
+
 
 function buildBundle(gitIdString, err) {
 	if(err) {
@@ -43,7 +54,7 @@ function buildBundle(gitIdString, err) {
 	}
 	var bundleFileName = 'bundle.' + gitIdString + '.js';
 	var bundleFilePath = 'app/client/' + bundleFileName;
-	var cmd = 'browserify src/client/index.js -o ' + bundleFilePath;
+	var cmd = 'browserify src/index.js -o ' + bundleFilePath;
 	exec(cmd, function(error, stdout, stderr) {
 		if(error) {
 			throw error;
