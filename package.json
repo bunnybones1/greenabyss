@@ -4,8 +4,7 @@
   "description": "A web game based on survival.",
   "main": "src/server/index.js",
   "scripts": {
-    "start": "node src/server/index.js",
-    "build": "node scripts/build.js"
+    "prepublish": "git clone git@github.com:bunnybones1/greenabyss.git -b master/server --single-branch server"
   },
   "repository": {
     "type": "git",
@@ -23,12 +22,7 @@
   },
   "homepage": "https://github.com/bunnybones1/greenabyss#readme",
   "devDependencies": {
-    "git-rev": "^0.2.1",
-    "jsonfile": "^2.4.0"
   },
   "dependencies": {
-    "ejs": "^2.5.5",
-    "express": "^4.14.0",
-    "loadandrunscripts": "^2.0.1"
   }
 }
