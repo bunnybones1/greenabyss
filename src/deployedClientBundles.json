@@ -2,7 +2,15 @@
   "list": [
     {
       "weight": 1,
-      "file": "bundle.client-master.ca01ed1.2bd14129668b70976a589af95309efd47adfef47.js"
+      "file": "bundle.client-master.ca01ed1.f7bb043f22593e2e46711939448ca11dadc32398.js"
+    },
+    {
+      "weight": 1,
+      "file": "bundle.client-master.96a6697.309190afe40f84889731bd96d264c1272fbc4995.js"
+    },
+    {
+      "weight": 1,
+      "file": "bundle.client-master.96a6697.610a174e6a95b05f4c8471457b6c04b78a7b81fb.js"
     }
   ]
 }

@@ -4,7 +4,8 @@
   "description": "A web game based on survival.",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "heroku local",
+    "test": "heroku local -e .envtest"
   },
   "repository": {
     "type": "git",
