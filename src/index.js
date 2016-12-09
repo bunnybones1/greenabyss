@@ -1,5 +1,5 @@
 var version = require('./version.json');
-console.log('green abyss testA' + version.gitIdString);
+console.log('green abyss client bundle version: ' + version.gitIdString);
 
 var googleApi = require('./googleApi')
 
