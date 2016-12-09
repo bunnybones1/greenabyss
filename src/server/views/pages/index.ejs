@@ -1,13 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Green Abyss</title>
-  <script  type="text/javascript" src="<%= bundleUrl %>"></script>
+	<title>Green Abyss</title>
+	<!-- <meta name="google-signin-callback" content="onGapiSigninCallback" /> -->
+	<script type="text/javascript" src="<%= bundleUrl %>"></script>
+	<script type="text/javascript">
+	window.onGapiLoadCallback = function(){
+		console.log('Gapi ready!!');
+		attemptLogin();
+	}
+
+	var authData = {
+		client_id: '1003887978766-ks5t12lss4gehrtbvcidpau0lj6vs0nf.apps.googleusercontent.com',
+		scope: 'https://www.googleapis.com/auth/games',
+		immediate: true,
+		cookie_policy: 'single_host_origin'
+	};
+	window.attemptLogin = function(){
+		console.log('Attempting login!!');
+		gapi.auth.authorize(authData, function(response) {
+			if (response.status.signed_in) {
+				console.log('Logged in!');
+			} else {
+				authData.immidiate = false;
+				gapi.auth.authorize(authData, function(response) {
+					debugger;
+				});
+			}
+		});
+	}
+	window.attemptLogout = function(){
+		console.log('Attempting logout!!');
+		gapi.auth.signOut();
+	}
+	window.onGapiSigninCallback = function(auth){
+		// if (auth && auth.error == null) {
+		// 	// Hooray! The user is logged int!
+		// 	// If we got here from a sign-in button, we should probably hide it
+		// 	// hideMyGamesSignInButton();
+		// 	// loadLeaderboardsAndAchievements();
+		// } else {
+		// 	// Common reasons are immediate_failed and user_signed_out
+		// 	if (auth && auth.hasOwnProperty('error')) {
+		// 		console.log('Sign in failed because: ', auth.error);
+		// 	}
+		// 	// showMyGamesSignInButton();
+		// }
+	}
+	</script>
+	<script src="https://apis.google.com/js/client.js?onload=onGapiLoadCallback" async defer></script>
 </head>
 
 <body>
 	<div>
-		Test
+		<div class="g-signin2" onclick="attemptLogin();">Login</div>
+		<div class="g-signout2" onclick="attemptLogout();">Logout</div>
 	</div>
 </body>
 </html>
