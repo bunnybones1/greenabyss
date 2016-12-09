@@ -2,6 +2,7 @@
 app
 node_modules
 npm-debug.log
+src/version.json
 
 # Local development
 *.env

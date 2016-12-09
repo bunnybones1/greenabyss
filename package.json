@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "test": "budo src/index.js --live --open --port 5000"
   },
   "repository": {
     "type": "git",
@@ -23,11 +24,13 @@
   },
   "homepage": "https://github.com/bunnybones1/greenabyss#readme",
   "devDependencies": {
+    "budo": "^9.3.0",
     "git-rev": "^0.2.1",
     "jsonfile": "^2.4.0",
     "mkdirp": "^0.5.1"
   },
   "dependencies": {
-    "loadandrunscripts": "^2.0.1"
+    "loadandrunscripts": "^2.0.1",
+    "lodash.defaults": "^4.2.0"
   }
 }

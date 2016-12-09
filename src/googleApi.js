@@ -1,22 +1,26 @@
 var loadandrunscripts = require('loadandrunscripts');
+var defaults = require('lodash.defaults');
 
-var authData = {
-	client_id: '1003887978766-ks5t12lss4gehrtbvcidpau0lj6vs0nf.apps.googleusercontent.com',
+var __defaultParams = {
+	client_id: 'pleaseprovide.apps.googleusercontent.com',
 	scope: 'https://www.googleapis.com/auth/games',
 	immediate: true,
 	cookie_policy: 'single_host_origin'
 };
 
-function init() {
+var _apiParams;
+function init(params) {
+	_apiParams = defaults(params, __defaultParams);
 	loadandrunscripts(
 		[
 			'https://apis.google.com/js/client.js?onload=onGapiLoadCallback'
 		],
-		onGapiReady
+		onGapiLoaded
 	);
 }
 
-function onGapiReady() {
+function onGapiLoaded() {
+	console.log('gapi js loaded.');
 	window.attemptLogin = attemptLogin;
 	window.attemptLogout = attemptLogout;
 }
@@ -25,15 +29,16 @@ function onGapiLoadCallback(){
 	console.log('Gapi ready!!');
 	attemptLogin();
 }
+window.onGapiLoadCallback = onGapiLoadCallback;
 
 function attemptLogin(){
 	console.log('Attempting login!!');
-	gapi.auth.authorize(authData, function(response) {
+	gapi.auth.authorize(_apiParams, function(response) {
 		if (response.status.signed_in) {
 			console.log('Logged in!');
 		} else {
-			authData.immediate = false;
-			gapi.auth.authorize(authData, function(response) {
+			_apiParams.immediate = false;
+			gapi.auth.authorize(_apiParams, function(response) {
 				debugger;
 			});
 		}
