@@ -17,7 +17,7 @@ function finish() {
 	var collected = this.collected;
 	var name = interestedIn.map(function(key) {
 		return collected[key];
-	}).join('.');
+	}).join('.').replace(/\//g, "-");
 	this.callback(name);
 }
 

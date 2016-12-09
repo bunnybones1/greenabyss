@@ -1,10 +1,10 @@
 {
-  "name": "greenabyss",
+  "name": "greenabyss-client",
   "version": "0.0.0",
   "description": "A web game based on survival.",
-  "main": "src/server/index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node src/server/index.js",
+    "start": "node src/index.js",
     "build": "node scripts/build.js"
   },
   "repository": {
@@ -27,8 +27,6 @@
     "jsonfile": "^2.4.0"
   },
   "dependencies": {
-    "ejs": "^2.5.5",
-    "express": "^4.14.0",
     "loadandrunscripts": "^2.0.1"
   }
 }
