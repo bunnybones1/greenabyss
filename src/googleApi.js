@@ -1,6 +1,8 @@
 var loadandrunscripts = require('loadandrunscripts');
 var defaults = require('lodash.defaults');
 
+var __debugLevel = 0;
+
 var __defaultParams = {
 	client_id: 'pleaseprovide.apps.googleusercontent.com',
 	scope: 'https://www.googleapis.com/auth/games',
@@ -20,22 +22,22 @@ function init(params) {
 }
 
 function onGapiLoaded() {
-	console.log('gapi js loaded.');
+	if(__debugLevel > 0) console.log('gapi js loaded.');
 	window.attemptLogin = attemptLogin;
 	window.attemptLogout = attemptLogout;
 }
 
 function onGapiLoadCallback(){
-	console.log('Gapi ready!!');
+	if(__debugLevel > 0) console.log('Gapi ready!!');
 	attemptLogin();
 }
 window.onGapiLoadCallback = onGapiLoadCallback;
 
 function attemptLogin(){
-	console.log('Attempting login!!');
+	if(__debugLevel > 0) console.log('Attempting login!!');
 	gapi.auth.authorize(_apiParams, function(response) {
 		if (response.status.signed_in) {
-			console.log('Logged in!');
+			if(__debugLevel > 0) console.log('Logged in!');
 		} else {
 			_apiParams.immediate = false;
 			gapi.auth.authorize(_apiParams, function(response) {
@@ -46,7 +48,7 @@ function attemptLogin(){
 }
 
 function attemptLogout(){
-	console.log('Attempting logout!!');
+	if(__debugLevel > 0) console.log('Attempting logout!!');
 	gapi.auth.signOut();
 }
 
