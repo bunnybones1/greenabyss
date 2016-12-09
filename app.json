@@ -1,8 +1,8 @@
 {
-  "name": "Green Abyss",
-  "description": "Green Abyss: The Game",
-  "repository": "https://github.com/bunnybones1/greenabyss",
+  "name": "Green Abyss Server",
+  "description": "Green Abyss: The Game: The Server",
+  "repository": "https://github.com/bunnybones1/greenabyss#server/master",
   "logo": "http://greenabyss.herokuapp.com/greenabyss.svg",
-  "keywords": ["game", "green", "abyss"],
+  "keywords": ["game", "green", "abyss", "server"],
   "image": "heroku/nodejs"
 }
