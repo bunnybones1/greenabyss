@@ -1,4 +1,4 @@
-###Green Abyss###
+#Green Abyss#
 
 The simple life is threatened when progress knocks on your door. The life you've known is over, and so you must venture into the Green Abyss.
 
@@ -6,13 +6,13 @@ The simple life is threatened when progress knocks on your door. The life you've
 
 Green Abyss is web game that uses google play services.
 
-#Client#
+###Client###
 
 `./client`
 
 The client is a simple javascript bundle compiled with browserify. Google play services provide much of the game backend functionality.
 
-#Server#
+###Server###
 
 `./server`
 
