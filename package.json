@@ -5,9 +5,9 @@
   "main": "src/server/index.js",
   "scripts": {
     "prepublish": "npm run clone-server && npm run clone-client && npm run clone-assets && npm run unlink-master-git",
-    "clone-server": "git clone git@github.com:bunnybones1/greenabyss.git -b server/master --single-branch server",
-    "clone-client": "git clone git@github.com:bunnybones1/greenabyss.git -b client/master --single-branch client",
-    "clone-assets": "git clone git@github.com:bunnybones1/greenabyss.git -b assets/master --single-branch assets",
+    "clone-server": "git clone https://github.com/bunnybones1/greenabyss.git -b server/master --single-branch server",
+    "clone-client": "git clone https://github.com/bunnybones1/greenabyss.git -b client/master --single-branch client",
+    "clone-assets": "git clone https://github.com/bunnybones1/greenabyss.git -b assets/master --single-branch assets",
     "unlink-master-git": "rm -Rf .git"
   },
   "repository": {
