@@ -1,19 +1,49 @@
 var version = require('./version.json');
 console.log('green abyss client bundle version: ' + version.gitIdString);
 
+window.THREE = require('three');
+
+require('three/examples/js/controls/VRControls');
+require('three/examples/js/effects/VREffect');
+
 var GameWorld = require('GameWorld');
-var View = require('threejs-managed-view').View;
 var googleApi = require('./googleApi')
 
 googleApi.init({
 	client_id: '1003887978766-ks5t12lss4gehrtbvcidpau0lj6vs0nf.apps.googleusercontent.com'
 });
 
-var view = new View();
 
-require('utils/manageSceneOnEnterFrameObjects')(view.scene);
-view.renderManager.onEnterFrame.add(view.scene.onEnterFrame);
+var manageSceneOnEnterFrameObjects = require('utils/manageSceneOnEnterFrameObjects');
+var setupRayInput = require('utils/setupRayInput');
 
-var gameWorld = new GameWorld({
-	scene: view.scene
-});
+var view;
+var renderer;
+var vrDisplay;
+
+function onLoad() {
+	view = setupRayInput();
+	renderer = view.renderer;
+
+	manageSceneOnEnterFrameObjects(view.scene);
+	var gameWorld = new GameWorld({
+		scene: view.scene
+	});
+
+	window.addEventListener('resize', view.resize.bind(renderer));
+
+	navigator.getVRDisplays().then(function(displays) {
+		if (displays.length > 0) {
+			vrDisplay = displays[0];
+			vrDisplay.requestAnimationFrame(render);
+		}
+	});
+}
+
+function render() {
+	view.scene.onEnterFrame();
+	view.render();
+	vrDisplay.requestAnimationFrame(render);
+}
+
+window.addEventListener('load', onLoad);
