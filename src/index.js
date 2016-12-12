@@ -20,14 +20,15 @@ var setupRayInput = require('utils/setupRayInput');
 var view;
 var renderer;
 var vrDisplay;
-
+var gameWorld;
 function onLoad() {
 	view = setupRayInput();
 	renderer = view.renderer;
 
 	manageSceneOnEnterFrameObjects(view.scene);
-	var gameWorld = new GameWorld({
-		scene: view.scene
+	gameWorld = new GameWorld({
+		scene: view.scene,
+		renderer: renderer
 	});
 
 	window.addEventListener('resize', view.resize.bind(renderer));
@@ -42,6 +43,7 @@ function onLoad() {
 
 function render() {
 	view.scene.onEnterFrame();
+	gameWorld.onEnterFrame();
 	view.render();
 	vrDisplay.requestAnimationFrame(render);
 }
