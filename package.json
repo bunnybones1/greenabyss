@@ -40,6 +40,8 @@
     "lodash.defaults": "^4.2.0",
     "ray-input": "^0.1.2",
     "three": "^0.82.1",
-    "threejs-managed-view": "^5.0.0"
+    "threejs-managed-view": "^5.0.0",
+    "webvr-boilerplate": "^0.4.9",
+    "webvr-polyfill": "^0.9.25"
   }
 }
