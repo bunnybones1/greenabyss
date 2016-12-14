@@ -5,6 +5,7 @@ window.THREE = require('three');
 
 require('three/examples/js/controls/VRControls');
 require('three/examples/js/effects/VREffect');
+require('vendor/SkyShader');
 
 var GameWorld = require('GameWorld');
 var googleApi = require('./googleApi')
