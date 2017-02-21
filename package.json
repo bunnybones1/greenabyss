@@ -7,7 +7,7 @@
     "start": "node src/index.js",
     "build": "node scripts/build.js",
     "buildugly": "node scripts/build.js uglify",
-    "test": "budo src/index.js:bundle.js --live --open --port 5000 -- -t [ babelify --presets [ es2015 ]]"
+    "test": "budo src/index.js:bundle.js -d app --ssl --live --open --port 5000 -- -t [ babelify --presets [ es2015 ]] -t glslify"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
     "uglifyjs": "^2.4.10"
   },
   "dependencies": {
+    "glslify": "^6.0.1",
     "loadandrunscripts": "^2.0.1",
     "lodash.defaults": "^4.2.0",
     "ray-input": "^0.1.2",

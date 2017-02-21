@@ -7,46 +7,30 @@ require('three/examples/js/controls/VRControls');
 require('three/examples/js/effects/VREffect');
 require('vendor/SkyShader');
 
+var WebVRPolyfill = require('webvr-polyfill');
+var App = require('ThreeAppBase');
 var GameWorld = require('GameWorld');
-var googleApi = require('./googleApi')
+var googleApi = require('./googleApi');
+var onVR = require('utils/devices/onVR');
 
 googleApi.init({
 	client_id: '1003887978766-ks5t12lss4gehrtbvcidpau0lj6vs0nf.apps.googleusercontent.com'
 });
 
-
-var manageSceneOnEnterFrameObjects = require('utils/manageSceneOnEnterFrameObjects');
-var setupRayInput = require('utils/setupRayInput');
-
-var view;
-var renderer;
-var vrDisplay;
-var gameWorld;
 function onLoad() {
-	view = setupRayInput();
-	renderer = view.renderer;
+	var app = new App();
 
-	manageSceneOnEnterFrameObjects(view.scene);
-	gameWorld = new GameWorld({
-		scene: view.scene,
-		renderer: renderer
+	var gameWorld = new GameWorld({
+		scene: app.scene,
+		renderer: app.renderer
 	});
+	function onVRChangeCamera(state) {
+		app.camera = state ? gameWorld.cameraFirstPerson : gameWorld.cameraThirdPerson;
+	}
+	onVR(onVRChangeCamera);
+	app.registerOnEnterFrame(gameWorld.onEnterFrame.bind(gameWorld));
+	app.registerOnResize(gameWorld.onResize.bind(gameWorld));
 
-	window.addEventListener('resize', view.resize.bind(renderer));
-
-	navigator.getVRDisplays().then(function(displays) {
-		if (displays.length > 0) {
-			vrDisplay = displays[0];
-			vrDisplay.requestAnimationFrame(render);
-		}
-	});
-}
-
-function render() {
-	view.scene.onEnterFrame();
-	gameWorld.onEnterFrame();
-	view.render();
-	vrDisplay.requestAnimationFrame(render);
 }
 
 window.addEventListener('load', onLoad);
