@@ -17,3 +17,9 @@ The client is a simple javascript bundle compiled with browserify. Google play s
 `./server`
 
 The server is a simple node server that serves the client.
+
+###Assets###
+
+`./assets`
+
+The assets are stored with GIT LFS.
