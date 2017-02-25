@@ -42,13 +42,13 @@
     "loadandrunscripts": "^2.0.1",
     "lodash.defaults": "^4.2.0",
     "mobile-detect": "^1.3.5",
+    "orbit-controls": "^1.1.2",
     "raf-tweener": "^3.0.4",
     "ray-input": "^0.1.2",
     "three": "^0.82.1",
     "threejs-managed-view": "^5.0.0",
     "touches": "^1.2.2",
     "urlparam": "^1.0.2",
-    "webvr-boilerplate": "^0.4.9",
-    "webvr-polyfill": "^0.9.25"
+    "webvr-polyfill": "^0.9.23"
   }
 }
