@@ -4,7 +4,7 @@
   "description": "A web game based on survival.",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "postinstall": "echo '{\"gitIdString\": \"version hash based on git commit unavailalble until build.\"}' > src/version.json",
     "build": "node scripts/build.js",
     "buildugly": "node scripts/build.js uglify",
     "test": "budo src/index.js:bundle.js -d app --ssl --live --open --port 5000 -- -t [ babelify --presets [ es2015 ]] -t glslify"
