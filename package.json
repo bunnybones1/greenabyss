@@ -7,7 +7,7 @@
     "postinstall": "echo '{\"gitIdString\": \"version hash based on git commit unavailalble until build.\"}' > src/version.json",
     "build": "node scripts/build.js",
     "buildugly": "node scripts/build.js uglify",
-    "test": "budo src/index.js:bundle.js -d app --ssl --live --open --port 5000 -- -t [ babelify --presets [ es2015 ]] -t glslify"
+    "test": "budo src/index.js:bundle.js -d app --ssl --live --open --port 5000 -- -t babelify -t glslify"
   },
   "repository": {
     "type": "git",
@@ -25,27 +25,26 @@
   },
   "homepage": "https://github.com/bunnybones1/greenabyss#readme",
   "devDependencies": {
-    "babel-plugin-external-helpers": "^6.18.0",
-    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-es2015": "^6.22.0",
     "babelify": "^7.3.0",
-    "babelify-external-helpers": "^1.1.0",
-    "budo": "^9.3.0",
+    "brfs": "^1.4.3",
+    "browserify": "^13.0.1",
+    "budo": "^9.4.7",
     "git-rev": "^0.2.1",
     "jsonfile": "^2.4.0",
     "mkdirp": "^0.5.1",
+    "glslify": "^6.0.1",
     "uglifyjs": "^2.4.10"
   },
   "dependencies": {
     "eases": "^1.0.8",
     "gl-vec2": "^1.0.0",
-    "glslify": "^6.0.1",
     "loadandrunscripts": "^2.0.1",
     "lodash.clonedeep": "^4.5.0",
     "lodash.defaults": "^4.2.0",
     "mobile-detect": "^1.3.5",
     "orbit-controls": "^1.1.2",
     "raf-tweener": "^3.0.4",
-    "ray-input": "^0.1.2",
     "seed-random": "^2.2.0",
     "three": "git://github.com/bunnybones1/three.js.git#feature/subsurface-absorb-color-map",
     "threejs-managed-view": "^5.0.0",
