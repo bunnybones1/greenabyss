@@ -21,6 +21,7 @@ function onLoad() {
 
 	var gameWorld = new GameWorld({
 		app: app,
+		sceneBG: app.sceneBG,
 		scene: app.scene,
 		renderer: app.renderer,
 		rayEvents: app.rayEvents
