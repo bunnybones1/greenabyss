@@ -5,7 +5,6 @@ window.THREE = require('three');
 
 require('three/examples/js/controls/VRControls');
 require('three/examples/js/effects/VREffect');
-require('vendor/SkyShader');
 
 var WebVRPolyfill = require('webvr-polyfill');
 var App = require('ThreeAppBase');
