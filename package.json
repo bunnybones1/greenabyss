@@ -37,6 +37,7 @@
     "uglifyjs": "^2.4.10"
   },
   "dependencies": {
+    "js-combinatorics": "^0.5.2",
     "eases": "^1.0.8",
     "gl-vec2": "^1.0.0",
     "loadandrunscripts": "^2.0.1",
